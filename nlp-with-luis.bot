@@ -1,0 +1,25 @@
+{
+    "name": "nlp-with-luis",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "development",
+            "endpoint": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "1"
+        },
+              {
+                  "type": "luis",
+                  "name": "raumBot",
+                  "appId": "0813420d-9075-4727-9bc1-1a4cad31c4e8",
+                  "authoringKey": "db66e8fefadd49dc826bf9a10dd4b4dc",
+                  "subscriptionKey": "db66e8fefadd49dc826bf9a10dd4b4dc",
+                  "version": "0.1",
+                  "region": "westus",
+                  "id": "21"
+              }
+    ],
+    "padlock": "",
+    "version": "2.0"
+}

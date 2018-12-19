@@ -1,0 +1,934 @@
+{
+  "luis_schema_version": "3.1.0",
+  "versionId": "0.1",
+  "name": "raumBot",
+  "desc": "Bot für die Raumsuche",
+  "culture": "de-de",
+  "intents": [
+    {
+      "name": "None"
+    },
+    {
+      "name": "raumSuchen"
+    }
+  ],
+  "entities": [
+    {
+      "name": "namePerson",
+      "roles": []
+    },
+    {
+      "name": "ortRaum",
+      "roles": []
+    },
+    {
+      "name": "zeitRaum",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [
+    {
+      "name": "anzahlPersonen",
+      "subLists": [
+        {
+          "canonicalForm": "kleine Gruppe",
+          "list": [
+            "wenig Personen",
+            "2 Personen",
+            "3 Personen",
+            "für 2",
+            "für 3",
+            "wenig personen",
+            "2 personen",
+            "3 personen",
+            "kleine gruppe",
+            "kleine",
+            "kleine",
+            "uns",
+            "wir",
+            "für 3 Leute",
+            "für 3 personen",
+            "für 2 personen",
+            "für mich",
+            "und mir",
+            "mir und"
+          ]
+        },
+        {
+          "canonicalForm": "mittelgroße Gruppe",
+          "list": [
+            "mittlere Gruppe",
+            "4 Personen",
+            "5 Personen",
+            "6 Personen",
+            "für 4",
+            "für 5",
+            "für 6",
+            "Team",
+            "mehrere",
+            "mittlere gruppe",
+            "4 personen",
+            "5 personen",
+            "6 personen",
+            "team",
+            "mittelgroße gruppe",
+            "für 5 personen",
+            "für 6 personen",
+            "für 4 personen",
+            "raum für uns"
+          ]
+        },
+        {
+          "canonicalForm": "große Gruppe",
+          "list": [
+            "viele Personen",
+            "7 Personen",
+            "für 7",
+            "Abteilung",
+            "große gruppe",
+            "viele personen",
+            "7 personen",
+            "10 personen",
+            "abteilung",
+            "abteilung",
+            "abteilung",
+            "für 7 personen",
+            "für 12 personen",
+            "für 12",
+            "für 11",
+            "für 11 personen",
+            "für 10 personen",
+            "für 8",
+            "für 8 personen",
+            "für 9",
+            "für 9 personen"
+          ]
+        },
+        {
+          "canonicalForm": "Person",
+          "list": [
+            "für mich",
+            "1 Person",
+            "Ich",
+            "mir",
+            "mich",
+            "1 person",
+            "ich"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "ausstattungRaum",
+      "subLists": [
+        {
+          "canonicalForm": "Beamer",
+          "list": [
+            "beamer",
+            "projektor",
+            "beamer"
+          ]
+        },
+        {
+          "canonicalForm": "Flipchart",
+          "list": [
+            "papierwand",
+            "wand mit papier"
+          ]
+        },
+        {
+          "canonicalForm": "Bildschirm",
+          "list": [
+            "screen",
+            "monitor"
+          ]
+        },
+        {
+          "canonicalForm": "Leinwand",
+          "list": [
+            "projektionswand",
+            "weiße wand"
+          ]
+        },
+        {
+          "canonicalForm": "Whiteboard",
+          "list": [
+            "tafel",
+            "metalltafel",
+            "abwischbare tafel",
+            "board",
+            "abwischbaren board"
+          ]
+        },
+        {
+          "canonicalForm": "Moderationswand",
+          "list": [
+            "pinnwand"
+          ]
+        },
+        {
+          "canonicalForm": "Moderationskoffer",
+          "list": [
+            "stifte",
+            "textmarker",
+            "marker",
+            "karten",
+            "moderationskarten",
+            "schreibzeug"
+          ]
+        },
+        {
+          "canonicalForm": "Kaffeemaschine",
+          "list": [
+            "kaffee"
+          ]
+        },
+        {
+          "canonicalForm": "Konferenzraumtelefon",
+          "list": [
+            "telefon",
+            "konferenzraumtelefon",
+            "freisprecher",
+            "freisprechanlage"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "ortRelativ",
+      "subLists": [
+        {
+          "canonicalForm": "hier",
+          "list": [
+            "in der nähe",
+            "nah",
+            "nahegelegen",
+            "nahegelegenen",
+            "hier",
+            "nächsten"
+          ]
+        }
+      ],
+      "roles": []
+    },
+    {
+      "name": "Raum",
+      "subLists": [
+        {
+          "canonicalForm": "Raum",
+          "list": [
+            "Zimmer",
+            "Teamraum",
+            "Besprechungsraum",
+            "Arbeitsraum",
+            "zimmer",
+            "teamraum",
+            "besprechungsraum",
+            "arbeitsraum",
+            "besprechungs zimmer",
+            "reservierung",
+            "teamraum buchen",
+            "freie platz",
+            "meetingraum"
+          ]
+        }
+      ],
+      "roles": []
+    }
+  ],
+  "patternAnyEntities": [],
+  "regex_entities": [],
+  "prebuiltEntities": [
+    {
+      "name": "datetime",
+      "roles": []
+    }
+  ],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [
+    {
+      "pattern": "{Raum} in {ortRaum} buchen",
+      "intent": "raumSuchen"
+    }
+  ],
+  "utterances": [
+    {
+      "text": "am standort karlsruhe bitte raum für uns blocken",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "ortRaum",
+          "startPos": 3,
+          "endPos": 20
+        }
+      ]
+    },
+    {
+      "text": "benötige ein zimmer für gleich",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "benötigt wird ein raum in karlsruhe",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "ortRaum",
+          "startPos": 26,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "besprechungsraum in karlsruhe buchen",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "ortRaum",
+          "startPos": 20,
+          "endPos": 28
+        }
+      ]
+    },
+    {
+      "text": "besprechungszimmer für kleine gruppe buchen",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "bestelle einen raum für mich",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "brauche raum für 3 personen",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "buch katrin und mir einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 5,
+          "endPos": 10
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen nahegelegenen raum",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "buch mir einen raum für 12 personen für morgen früh",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 40,
+          "endPos": 45
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 47,
+          "endPos": 50
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für 7 personen für morgen früh",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 39,
+          "endPos": 44
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 46,
+          "endPos": 49
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für abends",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für heute abend",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 28
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 30,
+          "endPos": 34
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für mittags",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für morgen",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für morgen abend",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 29
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 31,
+          "endPos": 35
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für morgen morgens",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 29
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 31,
+          "endPos": 37
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum für übermorgen",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum in 15 minuten",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 23,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "buch mir einen raum mit jannick weichert",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 24,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "buch mir morgen früh einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 14
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 16,
+          "endPos": 19
+        }
+      ]
+    },
+    {
+      "text": "buch mir morgen um 15:00 einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "buch mir morgen um 5 einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "buch mir morgen um 6 einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "buche für morgen um 20:00",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 10,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "buche mir den nächsten freien raum",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "buche mir einen raum für 4 personen",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "buche mir einen raum für 4 personen in 15 minuten.",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 39,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum für morgen nachmittag",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 25,
+          "endPos": 30
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 32,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum für morgen um 16:30",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum für morgen um 18:00",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum für morgen um 20:00",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum in 35 minuten",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum in der nähe, der einen moderationskoffer hat.",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "buche mir einen raum in stuttgart",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "ortRaum",
+          "startPos": 24,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum mit andreas schmidt",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 25,
+          "endPos": 39
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum mit jannick weichert",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 25,
+          "endPos": 40
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum mit katrin",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 25,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "buche mir einen raum mit melanie burkhardt",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 25,
+          "endPos": 41
+        }
+      ]
+    },
+    {
+      "text": "buche mir gleich einen raum für meine abteilung mit beamer und whiteboard",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 10,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "für 5 leute wird ein raum benötigt",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "für morgen einen raum buchen",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 4,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "ich benötige ein zimmer für gleich",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 28,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "ich benötige einen raum hier",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "ich benötige einen raum und whiteboard.",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "ich suche einen raum in der nähe",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "ich suche einen raum mit beamer.",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "meetingraum um die mittagszeit buchen",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 19,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "nenne mir den nächsten freien raum",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "raum für 4-6 personen blocken",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "raum für gleich gebraucht",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "raum für jetzt gesucht",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 13
+        }
+      ]
+    },
+    {
+      "text": "raum für morgen gesucht",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 9,
+          "endPos": 14
+        }
+      ]
+    },
+    {
+      "text": "raum mit flipchart in karlsruhe für katrin und mich in 30 minuten reservieren",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "ortRaum",
+          "startPos": 22,
+          "endPos": 30
+        },
+        {
+          "entity": "namePerson",
+          "startPos": 36,
+          "endPos": 41
+        },
+        {
+          "entity": "zeitRaum",
+          "startPos": 55,
+          "endPos": 64
+        }
+      ]
+    },
+    {
+      "text": "reservier katrin einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 10,
+          "endPos": 15
+        }
+      ]
+    },
+    {
+      "text": "reservier mir ein zimmer mit jannick weichert",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "namePerson",
+          "startPos": 29,
+          "endPos": 44
+        }
+      ]
+    },
+    {
+      "text": "reserviere mir einen raum mit moderationswand.",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "reservierung für anfang der woche tätigen",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 17,
+          "endPos": 32
+        }
+      ]
+    },
+    {
+      "text": "reservierung für mittelgroße gruppe",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "sofort einen raum",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 0,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "teamraum buchen!",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "welcher freie platz ist morgen vorhanden",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 24,
+          "endPos": 29
+        }
+      ]
+    },
+    {
+      "text": "welcher raum ist später frei?",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 17,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "welches zimmer ist nun leer",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 19,
+          "endPos": 21
+        }
+      ]
+    },
+    {
+      "text": "wir brauchen noch einen raum für heute nachmittag",
+      "intent": "raumSuchen",
+      "entities": [
+        {
+          "entity": "zeitRaum",
+          "startPos": 39,
+          "endPos": 48
+        }
+      ]
+    },
+    {
+      "text": "zimmer für 11:15 reservieren",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "zimmer für 13:30 reservieren",
+      "intent": "raumSuchen",
+      "entities": []
+    },
+    {
+      "text": "zimmer für 16:00 reservieren",
+      "intent": "raumSuchen",
+      "entities": []
+    }
+  ],
+  "settings": []
+}
