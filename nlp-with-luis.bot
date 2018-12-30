@@ -4,7 +4,7 @@
         {
             "type": "endpoint",
             "name": "development",
-            "endpoint": "http://localhost:3978/api/messages",
+            "endpoint": "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/0813420d-9075-4727-9bc1-1a4cad31c4e8?verbose=true&timezoneOffset=-360&subscription-key=db66e8fefadd49dc826bf9a10dd4b4dc&q=",
             "appId": "",
             "appPassword": "",
             "id": "1"
