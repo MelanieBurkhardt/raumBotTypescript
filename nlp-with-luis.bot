@@ -1,25 +1,28 @@
 {
     "name": "nlp-with-luis",
+    "description": "",
     "services": [
         {
             "type": "endpoint",
-            "name": "development",
-            "endpoint": "http://localhost:3978/api/messages",
             "appId": "",
             "appPassword": "",
-            "id": "1"
+            "endpoint": "http://localhost:3978/api/messages",
+            "id": "1",
+            "name": "development"
         },
-              {
-                  "type": "luis",
-                  "name": "raumBot",
-                  "appId": "0813420d-9075-4727-9bc1-1a4cad31c4e8",
-                  "authoringKey": "db66e8fefadd49dc826bf9a10dd4b4dc",
-                  "subscriptionKey": "db66e8fefadd49dc826bf9a10dd4b4dc",
-                  "version": "0.1",
-                  "region": "westus",
-                  "id": "21"
-              }
+        {
+            "type": "luis",
+            "appId": "0813420d-9075-4727-9bc1-1a4cad31c4e8",
+            "authoringKey": "db66e8fefadd49dc826bf9a10dd4b4dc",
+            "id": "21",
+            "name": "raumBot",
+            "region": "westus",
+            "subscriptionKey": "db66e8fefadd49dc826bf9a10dd4b4dc",
+            "version": "0.1"
+        }
     ],
     "padlock": "",
-    "version": "2.0"
+    "version": "2.0",
+    "path": "C:\\Users\\burkh\\Documents\\15_Master\\02_WPF\\Technologiegestütztes Lernen\\raumBotTypescript-master\\nlp-with-luis.bot",
+    "overrides": null
 }
